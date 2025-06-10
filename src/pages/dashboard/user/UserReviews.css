@@ -1,0 +1,32 @@
+
+.user-reviews-section {
+  padding-top: 1.5rem;  
+  padding-bottom: 1.5rem; 
+}
+
+.user-reviews-h2 {
+  font-size: 1.5rem;  
+  font-weight: bold;
+  margin-bottom: 1rem;  
+}
+
+.user-reviews-paragraph {
+  font-size: 17.5px;  
+  font-weight: 500;     
+  margin-bottom: 0.5rem;  
+}
+
+.each-comment-user {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.each-comment-user:hover {
+  transform: scale(1.05);
+}

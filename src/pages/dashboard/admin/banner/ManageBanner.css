@@ -1,0 +1,97 @@
+.manage-banner-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.manage-banner-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.banner-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.banner-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.banner-form button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.banner-form button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: #f44336;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 4px;
+}
+
+.success-message {
+  color: #4CAF50;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+}
+
+.banners-list {
+  margin-top: 30px;
+}
+
+.banners-list h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.banner-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.banner-item p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.delete-button {
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+} 
