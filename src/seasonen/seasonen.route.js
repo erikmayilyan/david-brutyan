@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/test', (req, res) => {
-  res.json({ message: 'colorsru route is working' });
+  res.json({ message: 'seasonsEn route is working' });
 });
 
 module.exports = router;
