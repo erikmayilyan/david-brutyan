@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import UploadImage from '../addProduct/UploadImage'; 
 import "./addBlogs.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddBlogs = () => {
   const { language } = useLanguage('');
@@ -21,7 +22,7 @@ const AddBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/blogs/');
+        const response = await fetch(`${getBaseUrl()}/api/blogs/`);
         const data = await response.json();
         console.log(data);
         setBlogs(data);
@@ -40,7 +41,7 @@ const AddBlogs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/blogs/post-blog', {
+      const response = await fetch(`${getBaseUrl()}/api/blogs/post-blog`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ const AddBlogs = () => {
 
   const handleDelete = async (blogId) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/blogs/${blogId}`, {
+      const response = await fetch(`${getBaseUrl()}/api/blogs/${blogId}`, {
         method: 'DELETE',
       });
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./addColorsUa.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddCategoryEn = () => {
   const [categoryEn, setCategoryEn] = useState({
@@ -24,7 +25,7 @@ const AddCategoryEn = () => {
     setMessage('');
     
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesEn/add-category-en', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesEn/add-category-en`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -53,7 +54,7 @@ const AddCategoryEn = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesEn/get-categories-en', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesEn/get-categories-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -81,7 +82,7 @@ const AddCategoryEn = () => {
   const handleDelete = async (id) => {
     if (window.confirm(language === "ua" ? "Ви впевнені, що хочете видалити цю категорію?" : language === "ru" ? "Вы уверены, что хотите удалить эту категорию?" : "Are you sure you want to delete this category?")) {
       try {
-        const response = await fetch(`http://localhost:4000/api/categoriesEn/${id}`, {
+        const response = await fetch(`${getBaseUrl()}/api/categoriesEn/${id}`, {
           method: 'DELETE',
           credentials: 'include'
         });

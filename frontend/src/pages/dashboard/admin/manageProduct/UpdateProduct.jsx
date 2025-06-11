@@ -4,6 +4,7 @@ import { useLanguage } from '../../../../LanguageContext';
 import TextInput from '../addProduct/TextInput';
 import SelectInput from '../addProduct/SelectInput';
 import UploadImage from '../addProduct/UploadImage';
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const sizesList = [35, 36, 37, 38, 39, 40, 41, 42];
 
@@ -40,7 +41,7 @@ const UpdateProduct = () => {
 
   const fetchColorsUa = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsUa/get-colors-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsUa/get-colors-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -56,7 +57,7 @@ const UpdateProduct = () => {
 
   const fetchColorsRu = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsRu/get-colors-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsRu/get-colors-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -72,7 +73,7 @@ const UpdateProduct = () => {
 
   const fetchColorsEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsEn/get-colors-en', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsEn/get-colors-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -88,7 +89,7 @@ const UpdateProduct = () => {
 
   const fetchCategoriesUa = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesUa/get-categories-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesUa/get-categories-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -104,7 +105,7 @@ const UpdateProduct = () => {
 
   const fetchCategoriesRu = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesRu/get-categories-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesRu/get-categories-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -120,7 +121,7 @@ const UpdateProduct = () => {
 
   const fetchCategoriesEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesEn/get-categories-en', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesEn/get-categories-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -136,7 +137,7 @@ const UpdateProduct = () => {
 
   const fetchSeasonsEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/seasonsEn/get-seasons-en', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsEn/get-seasons-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -163,7 +164,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/products/${id}`, {
+        const response = await fetch(`${getBaseUrl()}/api/products/${id}`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -244,7 +245,7 @@ const UpdateProduct = () => {
         return;
       };
 
-      const response = await fetch(`http://localhost:4000/api/products/update-product/${id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/products/update-product/${id}`, {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',

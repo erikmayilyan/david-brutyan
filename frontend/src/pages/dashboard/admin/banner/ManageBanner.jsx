@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import axios from 'axios';
+import { getBaseUrl } from '../../../../utils/baseURL';
 import './ManageBanner.css';
 
 const ManageBanner = () => {
@@ -16,7 +17,7 @@ const ManageBanner = () => {
 
   const fetchBanner = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/banner/get-banners');
+      const response = await axios.get(`${getBaseUrl()}/api/banner/get-banners`);
       if (response.data && response.data.length > 0) {
         setBanner(response.data[0]);
         setNewBannerText(response.data[0].banner_text);
@@ -37,11 +38,11 @@ const ManageBanner = () => {
     try {
       // First delete all existing banners
       if (banner) {
-        await axios.delete(`http://localhost:4000/api/banner/${banner._id}`);
+        await axios.delete(`${getBaseUrl()}/api/banner/${banner._id}`);
       }
       
       // Then create a new banner
-      const response = await axios.post('http://localhost:4000/api/banner/add-banner', {
+      const response = await axios.post(`${getBaseUrl()}/api/banner/add-banner`, {
         banner_text: newBannerText
       });
       

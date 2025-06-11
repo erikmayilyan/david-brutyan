@@ -7,6 +7,7 @@ import avatarImg from "../assets/avatarImg.jpg";
 import mildoLogo from "../assets/mildo.png";
 import { logout } from '../redux/features/auth/authSlice';
 import "./Navbar.css";
+import { getBaseUrl } from '../utils/baseURL';
 
 const Navbar = () => {
   const { language, changeLanguage } = useLanguage();
@@ -61,7 +62,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/auth/logout', {
+      const response = await fetch(`${getBaseUrl()}/api/auth/logout`, {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',

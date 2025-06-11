@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./addColorsUa.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddSeasonRu = () => {
   const [seasonRu, setSeasonRu] = useState({
@@ -25,7 +26,7 @@ const AddSeasonRu = () => {
     
     try {
       console.log("Sending data:", JSON.stringify(seasonRu)); 
-      const response = await fetch('http://localhost:4000/api/seasonsRu/add-new-season-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsRu/add-new-season-ru`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -51,7 +52,7 @@ const AddSeasonRu = () => {
 
   const fetchSeasons = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/seasonsRu/get-seasons-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsRu/get-seasons-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -77,7 +78,7 @@ const AddSeasonRu = () => {
   const handleDelete = async (id) => {
     if (window.confirm(language === "ua" ? "Ви впевнені, що хочете видалити цю сезон?" : "Вы уверены, что хотите удалить эту сезон?")) {
       try {
-        const response = await fetch(`http://localhost:4000/api/seasonsRu/${id}`, {
+        const response = await fetch(`${getBaseUrl()}/api/seasonsRu/${id}`, {
           method: 'DELETE',
           credentials: 'include'
         });

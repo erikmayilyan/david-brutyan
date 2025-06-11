@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./addColorsUa.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddColorsUa = () => {
   const [colorsUa, setColorsUa] = useState({
@@ -24,7 +25,7 @@ const AddColorsUa = () => {
     setMessage('');
     
     try {
-      const response = await fetch('http://localhost:4000/api/colorsUa/add-new-color-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsUa/add-new-color-ua`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -49,7 +50,7 @@ const AddColorsUa = () => {
 
   const fetchColors = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsUa/get-colors-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsUa/get-colors-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -75,7 +76,7 @@ const AddColorsUa = () => {
   const handleDelete = async (id) => {
     if (window.confirm(language === "ua" ? "Ви впевнені, що хочете видалити цей колір?" : "Вы уверены, что хотите удалить этот цвет?")) {
       try {
-        const response = await fetch(`http://localhost:4000/api/colorsUa/${id}`, {
+        const response = await fetch(`${getBaseUrl()}/api/colorsUa/${id}`, {
           method: 'DELETE',
           credentials: 'include'
         });

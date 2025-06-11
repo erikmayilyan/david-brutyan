@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./Opinion.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const Opinion = () => {
   const { language } = useLanguage();
@@ -12,7 +13,7 @@ const Opinion = () => {
     const fetchOpinions = async () => {
       console.log("Fetching opinions from the database...");
       try {
-        const response = await fetch("http://localhost:4000/api/opinion/total-opinions");
+        const response = await fetch(`${getBaseUrl()}/api/opinion/total-opinions`);
         if (!response.ok) {
           throw new Error("Failed to fetch opinions");
         }
@@ -36,7 +37,7 @@ const Opinion = () => {
   const handleArchive = async (id) => {
     console.log(`Attempting to archive opinion with ID: ${id}`);
     try {
-      const response = await fetch("http://localhost:4000/api/opinion/archive-opinion", {
+      const response = await fetch(`${getBaseUrl()}/api/opinion/archive-opinion`, {
         method: "POST",
         headers: {
           "Content-Type" : "application/json",
@@ -62,7 +63,7 @@ const Opinion = () => {
   const handleDelete = async (id) => {
     console.log(`Attempting to delete opinion with ID: ${id}`);
     try {
-      const response = await fetch(`http://localhost:4000/api/opinion/${id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/opinion/${id}`, {
         method: "DELETE",
       });
 

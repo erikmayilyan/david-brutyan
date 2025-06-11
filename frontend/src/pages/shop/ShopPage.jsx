@@ -4,6 +4,7 @@ import ProductCards from '../shop/ProductCards';
 import ShopFiltering from './ShopFiltering';
 import { useFetchAllProductsQuery } from "../../redux/features/products/productsApi";
 import axios from 'axios';
+import { getBaseUrl } from '../../utils/baseURL';
 import './ShopPage.css';
 
 const ShopPage = () => {
@@ -22,11 +23,7 @@ const ShopPage = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          language === 'ua' 
-            ? 'http://localhost:4000/api/categoriesUa/get-categories-ua' 
-            : language === 'ru'
-              ? 'http://localhost:4000/api/categoriesRu/get-categories-ru'
-              : 'http://localhost:4000/api/categoriesEn/get-categories-en'
+          `${getBaseUrl()}/api/categories${language === 'ua' ? 'Ua' : language === 'ru' ? 'Ru' : 'En'}/get-categories-${language}`
         );
         const categoryNames = response.data.map(cat => cat.label);
         setCategories([
@@ -44,11 +41,7 @@ const ShopPage = () => {
     const fetchSeasons = async () => {
       try {
         const response = await axios.get(
-          language === 'ua' 
-            ? 'http://localhost:4000/api/seasonsUa/get-seasons-ua' 
-            : language === 'ru'
-              ? 'http://localhost:4000/api/seasonsRu/get-seasons-ru'
-              : 'http://localhost:4000/api/seasonsEn/get-seasons-en'
+          `${getBaseUrl()}/api/seasons${language === 'ua' ? 'Ua' : language === 'ru' ? 'Ru' : 'En'}/get-seasons-${language}`
         );
         console.log(response); 
    
@@ -69,11 +62,7 @@ const ShopPage = () => {
     const fetchColors = async () => {
       try {
         const response = await axios.get(
-          language === 'ua' 
-            ? 'http://localhost:4000/api/colorsUa/get-colors-ua' 
-            : language === 'ru'
-              ? 'http://localhost:4000/api/colorsRu/get-colors-ru'
-              : 'http://localhost:4000/api/colorsEn/get-colors-en'
+          `${getBaseUrl()}/api/colors${language === 'ua' ? 'Ua' : language === 'ru' ? 'Ru' : 'En'}/get-colors-${language}`
         );
         const colorNames = response.data.map(cat => cat.label);
         setColors([

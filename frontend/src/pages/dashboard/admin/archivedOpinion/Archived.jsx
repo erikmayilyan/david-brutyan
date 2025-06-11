@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./Archived.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const Archived = () => {
   const { language } = useLanguage('');
@@ -11,7 +12,7 @@ const Archived = () => {
   useEffect(() => {
     const fetchArchivedOpinions = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/archived/archived-opinions');
+        const response = await fetch(`${getBaseUrl()}/api/archived/archived-opinions`);
         if (!response.ok) {
           throw new Error('Failed To Fetch Archived Opinions');
         }
@@ -31,7 +32,7 @@ const Archived = () => {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:4000/api/archived/${id}`, { method: 'DELETE' });
+      const response = await fetch(`${getBaseUrl()}/api/archived/${id}`, { method: 'DELETE' });
       if (!response.ok) {
         throw new Error('Failed To Delete Opinion');
       }

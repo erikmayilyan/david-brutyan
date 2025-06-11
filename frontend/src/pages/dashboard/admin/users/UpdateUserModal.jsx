@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useUpdateUserRoleMutation } from '../../../../redux/features/auth/authApi';
 import { useLanguage } from '../../../../LanguageContext';
 import "./UpdateUserModal.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const UpdateUserModal = ({ user, onClose, onRoleUpdate }) => {
   const [role, setRole] = useState(user.role);
@@ -9,7 +10,7 @@ const UpdateUserModal = ({ user, onClose, onRoleUpdate }) => {
 
   const handleUpdateRole = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/auth/user/${user?._id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/auth/user/${user?._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type' : 'application/json',

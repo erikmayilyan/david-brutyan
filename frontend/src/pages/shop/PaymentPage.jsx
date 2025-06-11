@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../LanguageContext';
+import { getBaseUrl } from '../../utils/baseURL';
 import './PaymentPage.css';
 
 const PaymentPage = () => {
@@ -19,7 +20,7 @@ const PaymentPage = () => {
           throw new Error('No order ID found');
         }
 
-        const response = await fetch(`http://localhost:4000/api/orders/${orderId}`);
+        const response = await fetch(`${getBaseUrl()}/api/orders/${orderId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch order data');
         }

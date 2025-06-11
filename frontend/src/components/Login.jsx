@@ -5,6 +5,7 @@ import { useLanguage } from '../LanguageContext';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/features/auth/authSlice';
 import "./Login.css";
+import { getBaseUrl } from '../utils/baseURL';
 
 const Login = () => {
   const { language } = useLanguage(); 
@@ -23,7 +24,7 @@ const Login = () => {
     const data = { email, password }; 
   
     try {
-      const response = await fetch('http://localhost:4000/api/auth/login', {
+      const response = await fetch(`${getBaseUrl()}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

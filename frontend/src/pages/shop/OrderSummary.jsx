@@ -4,6 +4,7 @@ import { useLanguage } from '../../LanguageContext';
 import { clearCart } from '../../redux/features/cart/cartSlice';
 import './CartModal.css';
 import { useNavigate } from 'react-router-dom';
+import { getBaseUrl } from '../../utils/baseURL';
 
 const OrderSummary = ({ isFormValid, formData }) => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const OrderSummary = ({ isFormValid, formData }) => {
 
       console.log("Sending payment request with data:", body);
 
-      const response = await fetch('http://localhost:4000/api/orders/create-checkout-session', {
+      const response = await fetch(`${getBaseUrl()}/api/orders/create-checkout-session`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

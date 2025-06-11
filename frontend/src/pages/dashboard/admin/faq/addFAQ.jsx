@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./addFAQ.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddFAQ = () => {
   const { language } = useLanguage('');
@@ -19,7 +20,7 @@ const AddFAQ = () => {
   useEffect(() => {
     const fetchFAQs = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/faq/');
+        const response = await fetch(`${getBaseUrl()}/api/faq/`);
         const data = await response.json();
         console.log(data);
         setFaq(data);
@@ -38,7 +39,7 @@ const AddFAQ = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/faq/post-faq', {
+      const response = await fetch(`${getBaseUrl()}/api/faq/post-faq`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ const AddFAQ = () => {
 
   const handleDelete = async (faqId) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/faq/${faqId}`, {
+      const response = await fetch(`${getBaseUrl()}/api/faq/${faqId}`, {
         method: 'DELETE',
       });
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import axios from 'axios';
+import { getBaseUrl } from '../../utils/baseURL';
 import './MoreInfo.css';
 
 const MoreInfo = () => {
@@ -9,7 +10,7 @@ const MoreInfo = () => {
 
   const fetchBanner = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/banner/get-banners');
+      const response = await axios.get(`${getBaseUrl()}/api/banner/get-banners`);
       if (response.data && response.data.length > 0) {
         setBannerText(response.data[0].banner_text);
       }

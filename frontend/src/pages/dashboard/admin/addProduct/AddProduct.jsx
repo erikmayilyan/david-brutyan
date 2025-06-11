@@ -7,6 +7,7 @@ import UploadImage from './UploadImage';
 import { useAddProductMutation } from '../../../../redux/features/products/productsApi';
 import { useNavigate } from 'react-router-dom';
 import "./AddProduct.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const sizesList = [35, 36, 37, 38, 39, 40, 41, 42];
 
@@ -47,7 +48,7 @@ const AddProduct = () => {
 
   const fetchSeasonUa = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/seasonsUa/get-seasons-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsUa/get-seasons-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -75,7 +76,7 @@ const AddProduct = () => {
 
   const fetchSeasonRu = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/seasonsRu/get-seasons-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsRu/get-seasons-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -103,7 +104,7 @@ const AddProduct = () => {
 
   const fetchColorsUa = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsUa/get-colors-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsUa/get-colors-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -129,7 +130,7 @@ const AddProduct = () => {
 
   const fetchColorsRu = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsRu/get-colors-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsRu/get-colors-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -155,7 +156,7 @@ const AddProduct = () => {
 
   const fetchColorsEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsEn/get-colors-en', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsEn/get-colors-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -183,7 +184,7 @@ const AddProduct = () => {
 
   const fetchCategoriesUa = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesUa/get-categories-ua', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesUa/get-categories-ua`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -209,7 +210,7 @@ const AddProduct = () => {
 
   const fetchCategoriesRu = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesRu/get-categories-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesRu/get-categories-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -235,7 +236,7 @@ const AddProduct = () => {
 
   const fetchCategoriesEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/categoriesEn/get-categories-en', {
+      const response = await fetch(`${getBaseUrl()}/api/categoriesEn/get-categories-en`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -263,7 +264,7 @@ const AddProduct = () => {
 
   const fetchSeasonsEn = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/seasonsEn/get-seasons-en', {
+      const response = await fetch(`${getBaseUrl()}/api/seasonsEn/get-seasons-en`, {
         method: 'GET',
         credentials: 'include'
       });

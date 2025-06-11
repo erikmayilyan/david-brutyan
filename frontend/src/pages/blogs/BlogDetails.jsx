@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLanguage } from '../../LanguageContext';
 import "./BlogDetails.css";
+import { getBaseUrl } from '../../utils/baseURL';
 
 const BlogDetails = () => {
   const { id } = useParams();
   const { language } = useLanguage();
   const [blog, setBlog] = useState(null);
-  const API_URL = `http://localhost:4000/api/blogs/${id}`; // Adjust if needed
+  const API_URL = `${getBaseUrl()}/api/blogs/${id}`;
 
   useEffect(() => {
     const fetchBlog = async () => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import "./Success.css";
 import TimelineSteps from './TimelineSteps';
+import { getBaseUrl } from '../../utils/baseURL';
 
 const Success = () => {
   const [order, setOrder] = useState(null);
@@ -11,7 +12,7 @@ const Success = () => {
   useEffect(() => {
     if (sessionId) {
       console.log("Session ID:", sessionId);
-      fetch(`http://localhost:4000/api/orders/confirm-payment`, {
+      fetch(`${getBaseUrl()}/api/orders/confirm-payment`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

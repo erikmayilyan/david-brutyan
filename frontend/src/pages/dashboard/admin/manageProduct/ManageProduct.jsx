@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFetchAllProductsQuery } from '../../../../redux/features/products/productsApi';
 import { useLanguage } from '../../../../LanguageContext';
 import { Link } from 'react-router';
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const ManageProduct = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,7 +36,7 @@ const ManageProduct = () => {
     if (!confirmDelete) return; 
   
     try {
-      const response = await fetch(`http://localhost:4000/api/products/${id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

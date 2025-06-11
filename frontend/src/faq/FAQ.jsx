@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../LanguageContext';
 import './FAQ.css';
+import { getBaseUrl } from '../utils/baseURL';
 
 const FAQ = () => {
   const { language } = useLanguage();
@@ -8,7 +9,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/faq/')
+    fetch(`${getBaseUrl()}/api/faq/`)
       .then(response => response.json())
       .then(data => setFaqs(data))
       .catch(error => console.error('Error fetching FAQ data:', error));

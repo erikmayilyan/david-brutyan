@@ -3,6 +3,7 @@ import { useGetUserQuery } from '../../../../redux/features/auth/authApi';
 import { useLanguage } from '../../../../LanguageContext';
 import UpdateUserModal from './UpdateUserModal';
 import { Link } from 'react-router';
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const ManageUser = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const ManageUser = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/auth/user/${id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/auth/user/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type' : 'application/json',

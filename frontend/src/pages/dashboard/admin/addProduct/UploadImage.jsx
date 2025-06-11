@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import axios from 'axios';
+import { getBaseUrl } from '../../../../utils/baseURL';
 import "./AddProduct.css";
 
 const UploadImage = ({ name, setImage, setOtherImages, index, isMainImage }) => {
@@ -20,7 +21,7 @@ const UploadImage = ({ name, setImage, setOtherImages, index, isMainImage }) => 
   const uploadSingleImage = async (base64) => {
     setLoading(true);
     try {
-      const res = await axios.post(`http://localhost:4000/api/uploadImage`, { images: [base64] });
+      const res = await axios.post(`${getBaseUrl()}/api/uploadImage`, { images: [base64] });
       console.log(base64);
       const imageUrl = res.data[0];
       setUrl(imageUrl);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useLanguage } from '../LanguageContext';
 import './Login.css';
+import { getBaseUrl } from '../utils/baseURL';
 
 const Register = () => {
   const { language } = useLanguage();
@@ -29,7 +30,7 @@ const Register = () => {
       phone
     };
     try {
-      const response = await fetch('http://localhost:4000/api/auth/register', {
+      const response = await fetch(`${getBaseUrl()}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

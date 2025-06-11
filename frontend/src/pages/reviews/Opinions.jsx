@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import "./Opinions.css";
+import { getBaseUrl } from '../../utils/baseURL';
 
 const Opinions = () => {
   const { language } = useLanguage('');
@@ -13,7 +14,7 @@ const Opinions = () => {
   useEffect(() => {
     const fetchArchivedOpinions = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/archived/archived-opinions');
+        const response = await fetch(`${getBaseUrl()}/api/archived/archived-opinions`);
         if (!response.ok) {
           throw new Error('Failed To Fetch Archived Opinions');
         }

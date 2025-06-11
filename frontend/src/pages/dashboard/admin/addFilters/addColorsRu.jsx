@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../../../LanguageContext';
 import "./addColorsUa.css";
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const AddColorsRu = () => {
   const [colorsRu, setColorsRu] = useState({
@@ -24,7 +25,7 @@ const AddColorsRu = () => {
     setMessage('');
     
     try {
-      const response = await fetch('http://localhost:4000/api/colorsRu/add-new-color-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsRu/add-new-color-ru`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -49,7 +50,7 @@ const AddColorsRu = () => {
 
   const fetchColors = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/colorsRu/get-colors-ru', {
+      const response = await fetch(`${getBaseUrl()}/api/colorsRu/get-colors-ru`, {
         method: 'GET',
         credentials: 'include'
       });
@@ -75,7 +76,7 @@ const AddColorsRu = () => {
   const handleDelete = async (id) => {
     if (window.confirm(language === "ua" ? "Ви впевнені, що хочете видалити цей колір?" : "Вы уверены, что хотите удалить этот цвет?")) {
       try {
-        const response = await fetch(`http://localhost:4000/api/colorsRu/${id}`, {
+        const response = await fetch(`${getBaseUrl()}/api/colorsRu/${id}`, {
           method: 'DELETE',
           credentials: 'include'
         });

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUpdateOrderStatusMutation } from '../../../../redux/features/orders/orderApi';
+import { getBaseUrl } from '../../../../utils/baseURL';
 
 const UpdateOrderModal = ({ order, isOpen, onClose }) => {
   const [status, setStatus] = useState(order?.status_ua);
@@ -8,7 +9,7 @@ const UpdateOrderModal = ({ order, isOpen, onClose }) => {
 
   const handleUpdateOrderStatus = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/orders/update-order-status/${order._id}`, {
+      const response = await fetch(`${getBaseUrl()}/api/orders/update-order-status/${order._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',  

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import Opinions from './Opinions';
 import "./Reviews.css";
+import { getBaseUrl } from '../../utils/baseURL';
 
 const MAX_CHARACTERS = 500;
 
@@ -17,7 +18,7 @@ const Reviews = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/opinion/post-opinion', {
+      const response = await fetch(`${getBaseUrl()}/api/opinion/post-opinion`, {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
