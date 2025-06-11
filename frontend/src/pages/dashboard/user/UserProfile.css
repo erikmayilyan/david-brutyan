@@ -1,0 +1,146 @@
+.user-profile {
+  width: 100%;
+  max-width: 1280px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem; 
+}
+
+.user-profile-info {
+  background-color: white; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 0.5rem; 
+  padding: 1.5rem; 
+}
+
+.form-data-info {
+  width: 8rem; 
+  height: 8rem; 
+  object-fit: cover; 
+  border-radius: 50%;
+}
+
+.user-profile-data {
+  margin-left: 1.5rem;
+}
+
+.user-profile-data h3 {
+  font-size: 1.5rem; 
+  font-weight: 600; 
+}
+
+.user-profile-button {
+  color: #ffffff; 
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: color 0.2s ease-in-out;
+}
+
+.user-profile-button:hover {
+  color: #de3c3c; 
+}
+
+.user-profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9); 
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px; 
+  z-index: 50; 
+}
+
+.user-profile-modal-more {
+  background-color: white; 
+  padding: 1.5rem; 
+  border-radius: 0.5rem; 
+  width: 100%;
+  max-width: 36rem; 
+  margin-left: auto;
+  margin-right: auto; 
+  position: relative; 
+}
+
+.user-profile-modal-button {
+  position: absolute;
+  top: 0.5rem;
+  color: #d3d3d3;
+  transition: color 0.2s ease-in-out;
+  margin-top: 5px;
+}
+
+.user-profile-modal-button:hover {
+  color: #ffffff;
+}
+
+.user-profile-modal-nice {
+  width: 2rem; 
+  height: 2rem; 
+  padding: 0.5rem; 
+  background-color: black; 
+  border-radius: 50%; 
+}
+
+.user-edit-profile {
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  margin-top: 30px;
+  margin-bottom: 1rem; 
+}
+
+.user-profile-edit {
+  margin-bottom: 1rem;
+}
+
+.user-profile-form-info {
+  display: block; 
+  font-size: 0.875rem; 
+  font-weight: 500; 
+  color: #374151; 
+}
+
+.user-profile-form-input {
+  margin-top: 0.25rem; 
+  padding: 0.5rem; 
+  width: 100%; 
+  border: 1px solid #d1d5db; 
+  border-radius: 0.375rem; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
+}
+
+.user-save-changes {
+  margin-top: 1rem; 
+  width: 100%; 
+  background-color: #3b82f6; 
+  color: white; 
+  padding: 0.5rem 1rem; 
+  border-radius: 0.375rem; 
+}
+
+.user-save-changes-element {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
+
+.user-save-changes-error {
+  margin-top: 0.5rem; 
+  color: #ef4444; 
+}
+
+.user-save-changes-success {
+  margin-top: 0.5rem; 
+  color: #24a40a; 
+}
+
+@media (min-width: 768px) {
+  .user-profile-modal-more {
+    width: 24rem; 
+  }
+}

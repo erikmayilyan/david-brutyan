@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.routine {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 auto;  
+  margin-bottom: 0px;
+  margin-top: 50px;
+  border-bottom: 2px solid #ccc; 
+  padding-bottom: 70px;
+}
+
+.routine-more {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: 'Lora', serif;
+}
+
+.routine-more:hover {
+  color: rgb(118, 118, 118);
+  transform: 0.3s ease;
+}
+
+.routine-more p {
+  font-size: 250%;
+  margin-bottom: -20px;
+}
+
+@media screen and (max-width: 900px) {
+  .routine {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .routine {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .routine {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.terms-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 150px;
+  font-family: 'Lora', serif;
+  background-color: white;
+}
+
+.terms-container h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 130%;
+}
+
+.terms-section {
+  text-align: center;
+}
+
+.terms-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 120%;
+}
+
+.terms-section h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 110%;
+}
+
+.terms-section p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.terms-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.terms-section ul li {
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+
+.term-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.terms-paragraph {
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  text-align: center;
+}

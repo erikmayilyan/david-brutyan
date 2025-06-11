@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  margin-top: 70px;
+}
+
+.product-card {
+  border: 0.5px solid black;
+  border-radius: 20px;
+}
+
+.relative {
+  position: relative;
+}
+
+.product-image {
+  height: 200px;
+  border-radius: 20px;
+  padding: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+.the-cart-thing {
+  background-color: #000000;
+  padding: 0.375rem;
+  color: white;
+}
+
+.the-cart-thing:hover {
+  background-color: #282828;
+}
+
+.hover-block {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.40rem;
+}
+
+.product-details {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Lora', serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (min-width: 540px) {
+  .product-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .product-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-image {
+    height: 16rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
