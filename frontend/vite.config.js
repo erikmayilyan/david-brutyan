@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -10,7 +9,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: process.env.NODE_ENV === 'production' ? 'https://mildo.shop' : 'http://localhost:4000',
+        target: process.env.NODE_ENV === 'production' ? 'https://mildo.shop:4000' : 'http://localhost:4000',
         changeOrigin: true,
         secure: false
       }
@@ -21,5 +20,13 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   }
 })
