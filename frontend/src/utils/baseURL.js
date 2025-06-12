@@ -3,7 +3,7 @@ export const getBaseUrl = () => {
   
   // Production URLs
   if (hostname === 'mildo.shop' || hostname === 'www.mildo.shop') {
-    return 'https://mildo.shop:4000';
+    return 'https://mildo.shop/api';
   }
   
   // Development URL
@@ -12,5 +12,5 @@ export const getBaseUrl = () => {
   }
   
   // Default to production URL for any other case
-  return 'https://mildo.shop:4000';
+  return 'https://mildo.shop/api';
 };
