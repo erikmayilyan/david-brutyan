@@ -68,15 +68,22 @@ async function main() {
     console.error("Database URL is not set in the environment variables.");
     return;
   }
-  await mongoose.connect(dbUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 15000,
-    socketTimeoutMS: 45000,
-  });
-  console.log("MongoDB is successfully connected!");
-}
-
+  try {
+    await mongoose.connect(dbUri, {
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 30000,
+      maxPoolSize: 10,
+      minPoolSize: 5,
+      retryWrites: true,
+      w: 'majority'
+    });
+    console.log("MongoDB is successfully connected!");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    process.exit(1);
+  }
+};
 
 const uploadImage = require("./src/utils/uploadImage");
 
