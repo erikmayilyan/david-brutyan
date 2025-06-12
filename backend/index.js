@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://mildo.shop", "https://www.mildo.shop"],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
