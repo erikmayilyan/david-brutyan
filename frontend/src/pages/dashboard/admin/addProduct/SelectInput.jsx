@@ -14,6 +14,7 @@ const SelectInput = ({ label, name, value, onChange, options, }) => {
         onChange={onChange}
         className='add-product-InputCSS'
       >
+        <option value="">Select an option</option>
         {
           options.map((option, index) => (
             <option key={index} value={option.value}>
