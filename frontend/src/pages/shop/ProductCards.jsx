@@ -19,7 +19,7 @@ const ProductCards = ({ products }) => {
   };
 
   return (
-    <div className='product-cards'>
+    <div className='product-cards' style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '3rem', marginTop: '70px' }}>
       {
         products.map((product, index) => (
           <div key={index} className='product-card'>
