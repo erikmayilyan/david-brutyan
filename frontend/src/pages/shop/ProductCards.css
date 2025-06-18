@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Force flexbox layout with high specificity */
+.shop-page-main .product-cards,
 .product-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  margin-top: 70px;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 3rem !important;
+  margin-top: 70px !important;
+  width: 100% !important;
 }
 
+.shop-page-main .product-card,
 .product-card {
-  flex: 1 1 100%;
-  max-width: 100%;
+  flex: 1 1 100% !important;
+  max-width: 100% !important;
   border: 0.5px solid black;
   border-radius: 20px;
+  margin-bottom: 0 !important;
 }
 
 .relative {
@@ -54,17 +59,20 @@
   cursor: pointer;
 }
 
+/* Responsive breakpoints with high specificity */
 @media (min-width: 540px) {
+  .shop-page-main .product-card,
   .product-card {
-    flex: 1 1 calc(50% - 1.5rem);
-    max-width: calc(50% - 1.5rem);
+    flex: 1 1 calc(50% - 1.5rem) !important;
+    max-width: calc(50% - 1.5rem) !important;
   }
 }
 
 @media (min-width: 768px) {
+  .shop-page-main .product-card,
   .product-card {
-    flex: 1 1 calc(33.333% - 2rem);
-    max-width: calc(33.333% - 2rem);
+    flex: 1 1 calc(33.333% - 2rem) !important;
+    max-width: calc(33.333% - 2rem) !important;
   }
 
   .product-image {
@@ -73,8 +81,9 @@
 }
 
 @media (min-width: 1024px) {
+  .shop-page-main .product-card,
   .product-card {
-    flex: 1 1 calc(25% - 2.25rem);
-    max-width: calc(25% - 2.25rem);
+    flex: 1 1 calc(25% - 2.25rem) !important;
+    max-width: calc(25% - 2.25rem) !important;
   }
 }
