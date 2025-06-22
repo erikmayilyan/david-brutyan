@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
 .help-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,13 +23,15 @@
 }
 
 .help-modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
+  background: #fff;
+  padding: 32px 24px 24px 24px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  font-family: 'Lora', serif;
+  text-align: center;
 }
 
 .help-modal-header {
@@ -37,11 +48,54 @@
 }
 
 .close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 2rem;
+  color: #888;
   cursor: pointer;
-  color: #666;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #222;
+}
+
+.help-modal-content h4 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  color: #222;
+  font-weight: 700;
+}
+
+.help-modal-content p {
+  margin: 12px 0;
+  color: #444;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.help-modal-content i {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+@media (max-width: 500px) {
+  .help-modal-content {
+    padding: 20px 8px 16px 8px;
+    max-width: 95vw;
+  }
+  .close-button {
+    top: 8px;
+    right: 8px;
+    font-size: 1.5rem;
+  }
 }
 
 .help-modal-body {

@@ -10,10 +10,12 @@ const HelpModal = ({ open, children, onClose }) => {
     <>
       <div className='help-overlay'></div>
       <div className='help-modal'>
-        <button onClick={onClose}>
-          X
-        </button>
-        {children}
+        <div className='help-modal-content'>
+          <button className='close-button' onClick={onClose} aria-label="Close modal">
+            &times;
+          </button>
+          {children}
+        </div>
       </div>
     </>
   )

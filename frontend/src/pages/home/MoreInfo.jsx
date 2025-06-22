@@ -6,13 +6,13 @@ import './MoreInfo.css';
 
 const MoreInfo = () => {
   const { language } = useLanguage();
-  const [bannerText, setBannerText] = useState('');
+  const [banner, setBanner] = useState(null);
 
   const fetchBanner = async () => {
     try {
       const response = await axios.get(`${getBaseUrl()}/api/banner/get-banners`);
       if (response.data && response.data.length > 0) {
-        setBannerText(response.data[0].banner_text);
+        setBanner(response.data[0]);
       }
     } catch (error) {
       console.error('Error fetching banner:', error);
@@ -29,12 +29,22 @@ const MoreInfo = () => {
   // Create an array of 20 items for smoother infinite scrolling
   const bannerItems = Array(20).fill(null);
 
+  // Debug: log language and banner
+  console.log('LANGUAGE:', language, 'BANNER:', banner);
+
+  let bannerText = 'ЗНИЖКИ ДО 50%';
+  if (banner) {
+    if (language === 'ru' || language === 'russian') bannerText = banner.banner_text_ru || 'СКИДКИ ДО 50%';
+    else if (language === 'en' || language === 'english') bannerText = banner.banner_text_en || 'DISCOUNTS UP TO 50%';
+    else bannerText = banner.banner_text_ua || 'ЗНИЖКИ ДО 50%';
+  }
+
   return (
     <div className="more-info-slider">
       <div className="more-info-list">
         {bannerItems.map((_, index) => (
           <div key={index} className="more-info-item">
-            <p className="discount-text">{bannerText || 'ЗНИЖКИ ДО 50%'}</p>
+            <p className="discount-text">{bannerText}</p>
           </div>
         ))}
       </div>

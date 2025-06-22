@@ -115,4 +115,22 @@
   .instagram img {
     height: 175px;
   }
+
+  .footer-other {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .instagram img {
+    height: 175px;
+  }
+
+  .footer-other {
+    width: 70%;
+  }
 }

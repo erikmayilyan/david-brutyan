@@ -17,7 +17,9 @@ router.post('/add-banner', async (req, res) => {
     await Banner.deleteMany({});
     
     const newBanner = new Banner({
-      ...req.body
+      banner_text_ua: req.body.banner_text_ua,
+      banner_text_ru: req.body.banner_text_ru,
+      banner_text_en: req.body.banner_text_en
     });
     const savedBanner = await newBanner.save();
     res.status(201).send(savedBanner);
@@ -32,7 +34,11 @@ router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const updatedBanner = await Banner.findByIdAndUpdate(
       id,
-      { banner_text: req.body.banner_text },
+      {
+        banner_text_ua: req.body.banner_text_ua,
+        banner_text_ru: req.body.banner_text_ru,
+        banner_text_en: req.body.banner_text_en
+      },
       { new: true }
     );
     

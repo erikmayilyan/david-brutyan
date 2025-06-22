@@ -18,6 +18,13 @@ const uploadImage = (images) => {
     images = [images];  // Convert it to an array if it's not already
   }
 
+  console.log('Uploading images to Cloudinary:', images.length, 'images');
+  console.log('Cloudinary config:', {
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY ? '***' : 'NOT SET',
+    api_secret: process.env.CLOUD_API_SECRET ? '***' : 'NOT SET'
+  });
+
   const uploadPromises = images.map(image =>
     cloudinary.uploader.upload(image, opts)
   );
@@ -25,11 +32,12 @@ const uploadImage = (images) => {
   return Promise.all(uploadPromises)
     .then(results => {
       const urls = results.map(result => result.secure_url);
+      console.log('Successfully uploaded images:', urls);
       return urls;
     })
     .catch(err => {
       console.error('Error uploading image:', err);
-      throw new Error('Error uploading image: ', err);
+      throw new Error('Error uploading image: ' + err.message);
     });
 };
 

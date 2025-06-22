@@ -7,7 +7,9 @@ import './ManageBanner.css';
 const ManageBanner = () => {
   const { language } = useLanguage();
   const [banner, setBanner] = useState(null);
-  const [newBannerText, setNewBannerText] = useState('');
+  const [bannerUa, setBannerUa] = useState('');
+  const [bannerRu, setBannerRu] = useState('');
+  const [bannerEn, setBannerEn] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -20,7 +22,9 @@ const ManageBanner = () => {
       const response = await axios.get(`${getBaseUrl()}/api/banner/get-banners`);
       if (response.data && response.data.length > 0) {
         setBanner(response.data[0]);
-        setNewBannerText(response.data[0].banner_text);
+        setBannerUa(response.data[0].banner_text_ua || '');
+        setBannerRu(response.data[0].banner_text_ru || '');
+        setBannerEn(response.data[0].banner_text_en || '');
       }
     } catch (error) {
       console.error('Error fetching banner:', error);
@@ -34,19 +38,17 @@ const ManageBanner = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
-    
     try {
       // First delete all existing banners
       if (banner) {
         await axios.delete(`${getBaseUrl()}/api/banner/${banner._id}`);
       }
-      
       // Then create a new banner
       const response = await axios.post(`${getBaseUrl()}/api/banner/add-banner`, {
-        banner_text: newBannerText
+        banner_text_ua: bannerUa,
+        banner_text_ru: bannerRu,
+        banner_text_en: bannerEn
       });
-      
-      console.log('Banner updated successfully:', response.data);
       setBanner(response.data);
       setSuccess(language === "ua" ? "Банер успішно оновлено" : 
                 language === "ru" ? "Баннер успешно обновлен" : 
@@ -64,15 +66,26 @@ const ManageBanner = () => {
       <h2>{language === "ua" ? "Керування Банером" : 
            language === "ru" ? "Управление Баннером" : 
            "Manage Banner"}</h2>
-
       <form onSubmit={handleUpdateBanner} className="banner-form">
         <input
           type="text"
-          value={newBannerText}
-          onChange={(e) => setNewBannerText(e.target.value)}
-          placeholder={language === "ua" ? "Введіть текст банеру" : 
-                     language === "ru" ? "Введите текст баннера" : 
-                     "Enter banner text"}
+          value={bannerUa}
+          onChange={e => setBannerUa(e.target.value)}
+          placeholder="Введіть текст банеру (UA)"
+          required
+        />
+        <input
+          type="text"
+          value={bannerRu}
+          onChange={e => setBannerRu(e.target.value)}
+          placeholder="Введите текст баннера (RU)"
+          required
+        />
+        <input
+          type="text"
+          value={bannerEn}
+          onChange={e => setBannerEn(e.target.value)}
+          placeholder="Enter banner text (EN)"
           required
         />
         <button type="submit">
@@ -81,17 +94,15 @@ const ManageBanner = () => {
            "Update Banner"}
         </button>
       </form>
-
       {error && <div className="error-message">{error}</div>}
       {success && <div className="success-message">{success}</div>}
-
       <div className="banners-list">
         <h3>{language === "ua" ? "Поточний Банер" : 
              language === "ru" ? "Текущий Баннер" : 
              "Current Banner"}</h3>
         {banner && (
           <div className="banner-item">
-            <p>{banner.banner_text}</p>
+            <p>{language === "ua" ? banner.banner_text_ua : language === "ru" ? banner.banner_text_ru : banner.banner_text_en}</p>
           </div>
         )}
       </div>

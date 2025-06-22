@@ -2,34 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import './ShopPage.css';
 
-const ShopFiltering = ({ filtersUa, filtersRu, filtersState, setFiltersState }) => {
+const ShopFiltering = ({ filtersUa, filtersRu, filtersEn, filtersState, setFiltersState }) => {
   const { language } = useLanguage();
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isColorOpen, setIsColorOpen] = useState(false);  
   const [isPriceOpen, setIsPriceOpen] = useState(false);
   const [isSeasonOpen, setIsSeasonOpen] = useState(false);
 
-  const categories = language === 'ua' ? filtersUa.categories : filtersRu.categories;
-  const colors = language === 'ua' ? filtersUa.colors : filtersRu.colors;  
-  const priceRanges = language === 'ua' ? filtersUa.priceRanges : filtersRu.priceRanges;
-  const seasons = language === 'ua' ? filtersUa.seasons : filtersRu.seasons;
+  const filters = language === 'ua' ? filtersUa : language === 'ru' ? filtersRu : filtersEn;
+
+  const categories = filters.categories;
+  const colors = filters.colors;  
+  const priceRanges = filters.priceRanges;
+  const seasons = filters.seasons;
   
-  const placeholder = language === 'ua' ? 'КАТЕГОРІЇ' : 'КАТЕГОРИИ';
-  const placeholder2 = language === 'ua' ? 'КОЛЬОРИ' : 'ЦВЕТА';
-  const placeholder3 = language === 'ua' ? 'ЦІНА' : 'ЦЕНА';
-  const placeholder4 = language === 'ua' ? 'СЕЗОН' : 'СЕЗОН';
+  const placeholder = language === 'ua' ? 'КАТЕГОРІЇ' : language === 'ru' ? 'КАТЕГОРИИ' : (language === 'en' || language === 'english') ? 'CATEGORIES' : 'CATEGORIES';
+  const placeholder2 = language === 'ua' ? 'КОЛЬОРИ' : language === 'ru' ? 'ЦВЕТА' : (language === 'en' || language === 'english') ? 'COLORS' : 'COLORS';
+  const placeholder3 = language === 'ua' ? 'ЦІНА' : language === 'ru' ? 'ЦЕНА' : (language === 'en' || language === 'english') ? 'PRICE' : 'PRICE';
+  const placeholder4 = language === 'ua' ? 'СЕЗОН' : language === 'ru' ? 'СЕЗОНЫ' : (language === 'en' || language === 'english') ? 'SEASONS' : 'SEASONS';
 
   const handleCategoryChange = (category) => {
+    console.log('Selected category:', category);
     setFiltersState({ ...filtersState, category });
     setIsCategoryOpen(false); 
   };
 
   const handleColorChange = (color) => {
+    console.log('Selected color:', color);
     setFiltersState({ ...filtersState, color });
     setIsColorOpen(false);  
   };
 
   const handlePriceChange = (priceRange) => {
+    console.log('Selected price range:', priceRange);
     setFiltersState((prevState) => ({
       ...prevState,
       priceRange, 
@@ -38,25 +43,35 @@ const ShopFiltering = ({ filtersUa, filtersRu, filtersState, setFiltersState }) 
   };
 
   const handleSeasonChange = (season) => {
+    console.log('Selected season:', season);
     setFiltersState({ ...filtersState, season });
     setIsSeasonOpen(false); 
   };   
 
   const clearFilters = () => {
     setFiltersState({
-      category: language === 'ua' ? 'УСІ' : 'ВСЕ',
-      color: language === 'ua' ? 'УСІ' : 'ВСЕ',
-      season: language === 'ua' ? 'УСІ' : 'ВСЕ',
+      category: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
+      color: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
+      season: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
       priceRange: ''
     });
   };  
+
+  useEffect(() => {
+    setFiltersState({
+      category: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
+      color: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
+      season: language === 'ua' ? 'УСІ' : language === 'ru' ? 'ВСЕ' : 'ALL',
+      priceRange: ''
+    });
+  }, [language]);
 
   useEffect(() => {
     console.log("Updated Filters:", filtersState);
   }, [filtersState]);  
   
   return (
-    <div className='shop-filtering'>
+    <div className='shop-filtering' key={language}>
       <div className="shop-category">
         <div className="shop-category-more">
           <button 
@@ -164,7 +179,10 @@ const ShopFiltering = ({ filtersUa, filtersRu, filtersState, setFiltersState }) 
       <div className="shop-category">
         <button onClick={clearFilters} className='shop-category-btn'>
           {
-            language === "ua" ? 'ОЧИСТИТИ ВСІ ФІЛЬТРИ' : 'ОЧИСТИТЬ ВСЕ ФИЛЬТРЫ'
+            language === "ua" ? 'ОЧИСТИТИ ВСІ ФІЛЬТРИ' :
+            language === 'ru' ? 'ОЧИСТИТЬ ВСЕ ФИЛЬТРЫ' :
+            language === 'en' ? 'CLEAR ALL FILTERS' : 
+            'CLEAR ALL FILTERS' 
           }
         </button>
       </div>

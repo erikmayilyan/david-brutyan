@@ -78,21 +78,15 @@ const Footer = () => {
                 </h4>
                 <p>
                   <span>
-                    <i class="ri-map-pin-2-line"></i>
-                  </span>
-                  { language === "ua" ? 'вул. Велика Васильківська, 55, Київ, Україна, 02000' : language === "ru" ? 'ул. Большая Васильковская, 55, Киев, Украина, 02000' : '55 Velyka Vasylkivska St, Kyiv, Ukraine, 02000' }
-                </p>
-                <p>
-                  <span>
                     <i class="ri-mail-line"></i>
                   </span>
-                  support@mildo.ua
+                  mildoshoes2000@gmail.com 
                 </p>
                 <p>
                   <span>
                     <i class="ri-phone-line"></i>
                   </span>
-                  +380 44 444 44 44
+                  +380673923721 
                 </p>
               </div>
         </HelpModal>
