@@ -87,114 +87,129 @@ const AddBlogs = () => {
   };
 
   return (
-    <div className="add-blogs">
-      <h1>
-        { language === "ua" ? 'ДОДАТИ БЛОГ' : 'ДОБАВИТЬ БЛОГ' }
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="title_ua" 
-          className="add-blog-input"
-          placeholder="Title Ua" 
-          value={formData.title_ua} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <input 
-          type="text" 
-          name="title_ru" 
-          className="add-blog-input"
-          placeholder="Title Ru" 
-          value={formData.title_ru} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <input 
-          type="text" 
-          name="title_en" 
-          className="add-blog-input"
-          placeholder="Title En" 
-          value={formData.title_en} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <textarea 
-          name="description_ua" 
-          className="add-blog-input"
-          placeholder="Description Ua" 
-          value={formData.description_ua} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <textarea 
-          name="description_ru" 
-          className="add-blog-input"
-          placeholder="Description Ru" 
-          value={formData.description_ru} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <textarea 
-          name="description_en" 
-          className="add-blog-input"
-          placeholder="Description En" 
-          value={formData.description_en} 
-          onChange={handleChange} 
-          required 
-        />
-        <br />
-        <UploadImage 
-          name="image" 
-          setImage={setImage} 
-          isMainImage={true} 
-        />
-
-        <button type="submit" className='add-blog-button'>
-          { language === "ua" ? 'ДОДАТИ' : 'ДОБАВИТЬ' }
-        </button>
-
-        <table className="blogs-table">
-          <thead>
-            <tr>
-              <th>{ language === "ua" ? 'Назва (UA)' : language === "ru" ? 'Название (RU)' : 'Title (UA)' }</th>
-              <th>{ language === "ua" ? 'Назва (RU)' : language === "ru" ? 'Название (RU)' : 'Title (RU)' }</th>
-              <th>{ language === "ua" ? 'Назва (EN)' : language === "ru" ? 'Название (EN)' : 'Title (EN)' }</th>
-              <th>{ language === "ua" ? 'Опис (UA)' : language === "ru" ? 'Описание (UA)' : 'Description (UA)' }</th>
-              <th>{ language === "ua" ? 'Опис (RU)' : language === "ru" ? 'Описание (RU)' : 'Description (RU)' }</th>
-              <th>{ language === "ua" ? 'Опис (EN)' : language === "ru" ? 'Описание (EN)' : 'Description (EN)' }</th>
-              <th>{ language === "ua" ? 'Зображення' : language === "ru" ? 'Изображение' : 'Image' }</th>
-              <th>{ language === "ua" ? 'Дії' : language === "ru" ? 'Действия' : 'Actions' }</th>
+    <div className="add-blog-container">
+      <div className="add-blog-form">
+        <h2>
+          { language === "ua" ? 'ДОДАТИ БЛОГ' : 'ДОБАВИТЬ БЛОГ' }
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="title_ua">Title Ua</label>
+            <input 
+              type="text" 
+              name="title_ua" 
+              id="title_ua"
+              placeholder="Title Ua" 
+              value={formData.title_ua} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="title_ru">Title Ru</label>
+            <input 
+              type="text" 
+              name="title_ru" 
+              id="title_ru"
+              placeholder="Title Ru" 
+              value={formData.title_ru} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="title_en">Title En</label>
+            <input 
+              type="text" 
+              name="title_en" 
+              id="title_en"
+              placeholder="Title En" 
+              value={formData.title_en} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description_ua">Description Ua</label>
+            <textarea 
+              name="description_ua" 
+              id="description_ua"
+              placeholder="Description Ua" 
+              value={formData.description_ua} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description_ru">Description Ru</label>
+            <textarea 
+              name="description_ru" 
+              id="description_ru"
+              placeholder="Description Ru" 
+              value={formData.description_ru} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description_en">Description En</label>
+            <textarea 
+              name="description_en" 
+              id="description_en"
+              placeholder="Description En" 
+              value={formData.description_en} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label>ЗАГРУЗИТЬ ИЗОБРАЖЕНИЕ</label>
+            <UploadImage 
+              name="image" 
+              setImage={setImage} 
+              isMainImage={true} 
+            />
+          </div>
+          <button type="submit" className='submit-button'>
+            { language === "ua" ? 'ДОДАТИ' : 'ДОБАВИТЬ' }
+          </button>
+        </form>
+      </div>
+      <table className="blogs-table">
+        <thead>
+          <tr>
+            <th>{ language === "ua" ? 'Назва (UA)' : language === "ru" ? 'Название (RU)' : 'Title (UA)' }</th>
+            <th>{ language === "ua" ? 'Назва (RU)' : language === "ru" ? 'Название (RU)' : 'Title (RU)' }</th>
+            <th>{ language === "ua" ? 'Назва (EN)' : language === "ru" ? 'Название (EN)' : 'Title (EN)' }</th>
+            <th>{ language === "ua" ? 'Опис (UA)' : language === "ru" ? 'Описание (UA)' : 'Description (UA)' }</th>
+            <th>{ language === "ua" ? 'Опис (RU)' : language === "ru" ? 'Описание (RU)' : 'Description (RU)' }</th>
+            <th>{ language === "ua" ? 'Опис (EN)' : language === "ru" ? 'Описание (EN)' : 'Description (EN)' }</th>
+            <th>{ language === "ua" ? 'Зображення' : language === "ru" ? 'Изображение' : 'Image' }</th>
+            <th>{ language === "ua" ? 'Дії' : language === "ru" ? 'Действия' : 'Actions' }</th>
+          </tr>
+        </thead>
+        <tbody>
+          {blogs.map((blog) => (
+            <tr key={blog.blogId}>
+              <td>{blog.title_ua}</td>
+              <td>{blog.title_ru}</td>
+              <td>{blog.title_en}</td>
+              <td>{blog.description_ua}</td>
+              <td>{blog.description_ru}</td>
+              <td>{blog.description_en}</td>
+              <td>{blog.image && <img src={blog.image} alt="blog" className="blog-image" />}</td>
+              <td>
+                <button 
+                  onClick={() => handleDelete(blog._id)} 
+                  className="delete-blog-button"
+                >
+                  { language === "ua" ? 'ВИДАЛИТИ' : language === "ru" ? 'УДАЛИТЬ' : 'DELETE' }
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {blogs.map((blog) => (
-              <tr key={blog.blogId}>
-                <td>{blog.title_ua}</td>
-                <td>{blog.title_ru}</td>
-                <td>{blog.title_en}</td>
-                <td>{blog.description_ua}</td>
-                <td>{blog.description_ru}</td>
-                <td>{blog.description_en}</td>
-                <td>{blog.image && <img src={blog.image} alt="blog" className="blog-image" />}</td>
-                <td>
-                  <button 
-                    onClick={() => handleDelete(blog._id)} 
-                    className="delete-blog-button"
-                  >
-                    { language === "ua" ? 'ВИДАЛИТИ' : language === "ru" ? 'УДАЛИТЬ' : 'DELETE' }
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </form>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
